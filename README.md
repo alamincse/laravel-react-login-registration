@@ -7,6 +7,5 @@
 4. composer install
 5. php artisan key:generate
 6. php artisan migrate
-7. php artisan db:seed
-8. php artisan serve
+7. php artisan serve
 ```
