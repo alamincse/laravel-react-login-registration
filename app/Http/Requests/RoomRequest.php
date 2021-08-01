@@ -29,10 +29,12 @@ class RoomRequest extends FormRequest
             'room_type' => 'required',
             'room_qty' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
+            'end_date' => 'required|after_or_equal:start_date',
             'room_number' => [
                 'required', 
-                Rule::unique('rooms')->whereNull('deleted_at')
+                Rule::unique('rooms')->where(function ($query) {
+                    $query->where('end_date', '>=', $this->start_date);
+                })
             ]
         ];
 
